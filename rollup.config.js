@@ -64,8 +64,11 @@ export default {
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
-
+		!production &&
+		livereload({
+		  watch: "public",
+		  clientUrl: process.env.CLIENT_URL,
+		}),
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
 		production && terser()
